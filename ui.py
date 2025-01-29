@@ -9,7 +9,7 @@ class LibraryApp:
         self.root = Tk()
         self.root.title("Gestion de bibliothèque")
         self.root.geometry("1100x800")  # Taille de la fenêtre
-        #self.root.resizable(False, False)  # Empêche le redimensionnement
+        
 
         # Cadre principal pour centrer les widgets
         self.main_frame = Frame(self.root)

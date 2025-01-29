@@ -32,30 +32,30 @@ class LoanManagerApp:
 
     def create_loan_ui(self):
         # Formulaire pour les emprunts
-        Label(self.root, text="ID du livre :", font=self.label_font).grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        self.entry_book_id = Entry(self.root, font=self.entry_font, textvariable=self.book_id_var)
+        Label(self.main_frame, text="ID du livre :", font=self.label_font).grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        self.entry_book_id = Entry(self.main_frame, font=self.entry_font, width=30)
         self.entry_book_id.grid(row=0, column=1, padx=10, pady=10)
 
-        Label(self.root, text="Nom de l'emprunteur :", font=self.label_font).grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        self.entry_borrower_name = Entry(self.root, font=self.entry_font, textvariable=self.borrower_name_var)
+        Label(self.main_frame, text="Nom de l'emprunteur :", font=self.label_font).grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        self.entry_borrower_name = Entry(self.main_frame, font=self.entry_font, width=30)
         self.entry_borrower_name.grid(row=1, column=1, padx=10, pady=10)
 
-        Label(self.root, text="Date d'emprunt (AAAA-MM-JJ) :", font=self.label_font).grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        self.entry_borrow_date = Entry(self.root, font=self.entry_font, textvariable=self.borrow_date_var)
+        Label(self.main_frame, text="Date d'emprunt (AAAA-MM-JJ) :", font=self.label_font).grid(row=2, column=0, padx=10, pady=10, sticky="w")
+        self.entry_borrow_date = Entry(self.main_frame, font=self.entry_font, width=30)
         self.entry_borrow_date.grid(row=2, column=1, padx=10, pady=10)
 
-        Label(self.root, text="Date de retour (AAAA-MM-JJ) :", font=self.label_font).grid(row=3, column=0, padx=10, pady=10, sticky="w")
-        self.entry_return_date = Entry(self.root, font=self.entry_font, textvariable=self.return_date_var)
+        Label(self.main_frame, text="Date de retour (AAAA-MM-JJ) :", font=self.label_font).grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        self.entry_return_date = Entry(self.main_frame, font=self.entry_font, width=30)
         self.entry_return_date.grid(row=3, column=1, padx=10, pady=10)
 
-        Label(self.root, text="Quantité empruntée :", font=self.label_font).grid(row=4, column=0, padx=10, pady=10, sticky="w")
-        self.entry_quantity = Entry(self.root, font=self.entry_font, textvariable=self.quantity_var)
+        Label(self.main_frame, text="Quantité empruntée :", font=self.label_font).grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        self.entry_quantity = Entry(self.main_frame, font=self.entry_font, width=30)
         self.entry_quantity.grid(row=4, column=1, padx=10, pady=10)
 
         
         # Boutons alignés horizontalement
-        self.button_frame = Frame(self.root)
-        self.button_frame.grid(row=5, column=0, columnspan=2, pady=20)
+        self.button_frame = Frame(self.main_frame)
+        self.button_frame.grid(row=5, column=0, columnspan=3, pady=20)
 
         Button(self.button_frame, text="Ajouter un emprunt", font=self.button_font, command=self.add_loan_handler).pack(
             side="left", padx=10
@@ -65,7 +65,7 @@ class LoanManagerApp:
         )
 
         # Liste des emprunts
-        Label(self.root, text="Liste des emprunts :", font=self.label_font).grid(row=6, column=0, columnspan=2, pady=10)
+        Label(self.main_frame, text="Liste des emprunts :", font=self.label_font).grid(row=6, column=0, columnspan=2, pady=10)
         self.scrollbar = Scrollbar(self.main_frame)
         self.scrollbar.grid(row=7, column=3, sticky="ns", padx=(0, 10))
         self.listbox = Listbox(

@@ -129,3 +129,13 @@ Gardez un suivi des modifications apportées à chaque livre :
 
 Si une de ces idées vous intéresse, je peux vous aider à l'implémenter pas à pas ! 😊
 
+
+
+Label(self.root, text="Liste des emprunts :", font=self.label_font).grid(row=6, column=0, columnspan=2, pady=10)
+        self.scrollbar = Scrollbar(self.main_frame)
+        self.scrollbar.grid(row=7, column=3, sticky="ns", padx=(0, 10))
+        self.listbox = Listbox(
+            self.main_frame, height=10, width=70, font=self.entry_font, yscrollcommand=self.scrollbar.set
+        )
+        self.listbox.grid(row=7, column=0, columnspan=3, pady=10)
+        self.scrollbar.configure(command=self.listbox.yview)

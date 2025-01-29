@@ -1,6 +1,6 @@
 from database import create_tables, show_tables
-from logins import setup_default_admin  # Importation de la fonction depuis logins
-from menu import MainMenu  # Importation du menu principal
+from logins import setup_default_admin # Importation de la fonction depuis logins
+from logins import LoginApp  # Importation du menu principal
 
 if __name__ == "__main__":
     # Créer les tables si elles n'existent pas
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     setup_default_admin()  # Appel de la fonction setup_default_admin() depuis logins.py
 
     # Lance le menu principal, qui va ensuite gérer les actions de connexion
-    app = MainMenu()  
+    app = LoginApp()  
     app.run()  # Démarre le menu principal
 
 
