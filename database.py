@@ -31,6 +31,7 @@ def create_tables():
                             borrower_name TEXT NOT NULL,
                             borrow_date TEXT NOT NULL,
                             return_date TEXT,
+                            quantite INTEGER NOT NULL,
                             FOREIGN KEY (book_id) REFERENCES books(id)
 )''')
          
