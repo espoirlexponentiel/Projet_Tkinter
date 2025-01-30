@@ -2,13 +2,9 @@ import sqlite3
 from database import connect
 from tkinter import Tk, Label, Entry, Button, StringVar, messagebox, font
 import bcrypt
-from menu import MainMenu  # Importer le menu principal
-
-# def connect():
-    # return sqlite3.connect()
+from menu import MainMenu
 
 def create_user(username, password, role="user"):
-    
     hashed_password = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
     try:
         with connect() as conn:
@@ -21,9 +17,7 @@ def create_user(username, password, role="user"):
     except sqlite3.Error as e:
         print(f"Erreur lors de la création de l'utilisateur : {e}")
 
-
 def setup_default_admin():
-   
     try:
         with connect() as conn:
             cursor = conn.cursor()
@@ -33,18 +27,15 @@ def setup_default_admin():
     except sqlite3.Error as e:
         print(f"Erreur lors de la configuration de l'administrateur : {e}")
 
-
 class LoginApp:
     def __init__(self):
         self.root = Tk()
         self.root.title("Connexion à la bibliothèque")
         self.root.geometry("400x300")
 
-        # Variables
         self.username_var = StringVar()
         self.password_var = StringVar()
 
-        # Polices
         self.label_font = font.Font(family="Arial", size=14)
         self.entry_font = font.Font(family="Arial", size=12)
         self.button_font = font.Font(family="Arial", size=12, weight="bold")
@@ -61,6 +52,7 @@ class LoginApp:
         self.entry_password.grid(row=1, column=1, padx=10, pady=10)
 
         Button(self.root, text="Se connecter", font=self.button_font, command=self.login_handler).grid(row=2, column=0, columnspan=2, pady=20)
+    
     def login_handler(self):
         username = self.entry_username.get().strip()
         password = self.entry_password.get().strip()
@@ -77,7 +69,7 @@ class LoginApp:
                         if bcrypt.checkpw(password.encode("utf-8"), stored_hashed_password.encode("utf-8")):
                             messagebox.showinfo("Succès", f"Connexion réussie! Rôle : {role}")
                             self.root.destroy()
-                            MainMenu().run()
+                            MainMenu(username, role).run()
                         else:
                             messagebox.showwarning("Erreur", "Mot de passe incorrect.")
                     else:
@@ -87,8 +79,8 @@ class LoginApp:
         else:
             messagebox.showwarning("Erreur", "Veuillez remplir tous les champs.")
 
-
     def run(self):
         self.root.mainloop()
+
 
 

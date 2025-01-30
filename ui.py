@@ -101,7 +101,7 @@ class LibraryApp:
             messagebox.showwarning("Erreur", "Veuillez remplir les champs obligatoires.")
 
     def search_books_handler(self):
-        search_query = self.search_var.get().lower()
+        search_query = self.entry_search.get().lower()
         books = get_books()
         self.listbox.delete(0, END)
         for book in books:
